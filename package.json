@@ -1,0 +1,26 @@
+{
+  "name": "twitter-followers",
+  "version": "1.0.0",
+  "description": "get the list of twitter followers and un-followers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanmaypatil/twitter-followers.git"
+  },
+  "keywords": [
+    "twitter"
+  ],
+  "author": "tanmay patil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanmaypatil/twitter-followers/issues"
+  },
+  "homepage": "https://github.com/tanmaypatil/twitter-followers#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1140.0",
+    "dotenv": "^16.0.1"
+  }
+}
