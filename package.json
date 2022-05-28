@@ -21,6 +21,7 @@
   "homepage": "https://github.com/tanmaypatil/twitter-followers#readme",
   "dependencies": {
     "aws-sdk": "^2.1140.0",
+    "date-fns": "^2.28.0",
     "dotenv": "^16.0.1",
     "needle": "^3.1.0"
   }

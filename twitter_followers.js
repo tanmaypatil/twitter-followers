@@ -1,5 +1,9 @@
 var AWS = require("aws-sdk");
 let util = require("./utils");
+let api = require('./twitter_api');
+const utils = require("./utils");
+let audit = require('./audit');
+
 let endpoint = util.get_endpoint();
 
 AWS.config.update({
@@ -93,10 +97,16 @@ async function updateFollowers(user_id , user_date ,user_followers) {
 
 )}
 
-async function queryAndUpdate() {
+async function queryAndUpdateFollowers() {
+  console.log('querying current stored followers for user');
    let followers = await queryUser('tanmay_patil');
-   await updateFollowers('tanmay_patil','20220522',[1,2,3,4,5,6,7,8,9.10])
+   console.log('querying current stored followers for users');
+   let user_followers = await api.followers_id();
+   let followers_lost = utils.difference_arr(followers,user_followers);
+   let followers_gained = utils.difference_arr(user_followers,followers);
+   await updateFollowers('tanmay_patil','20220522',user_followers);
+   audit.insert_audit('tanmay_patil',followers_gained,followers_lost);
 }
 
 
-queryAndUpdate();
+queryAndUpdateFollowers();

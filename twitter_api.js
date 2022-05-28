@@ -13,6 +13,7 @@ const options = {
 
 let params = {
   max_results: 1000,
+  'user.fields' : "id"
 };
 
 async function fetch_followers() {
@@ -61,9 +62,20 @@ const getPage = async (params, options, nextToken) => {
   }
 };
 
-async function follow() {
+async function followers_id() {
   let users = await fetch_followers();
-  console.log(users);
+  //console.log(users);
+  let id = [];
+  for ( let u of users) {
+    id.push(u.id);
+  }
+  console.log('followers user id '+id);
+  return id;
 }
 
-follow();
+
+//followers_id();
+
+module.exports = {
+  followers_id : followers_id
+}

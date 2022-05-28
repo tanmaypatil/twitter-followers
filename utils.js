@@ -34,7 +34,16 @@ function get_endpoint() {
     return endpoint;
 }
 
+function difference_arr(arr1 , arr2) {
+    console.log(`inside difference_arr arr1 length - ${arr1.length} arr2 length - ${arr2.length} ` );
+    let difference2 = arr2.filter(x => !arr1.includes(x));
+    console.log(`inside difference_arr , post diff ,difference2 ,length - ${difference2.length}` );
+    return difference2;
+ }
+
+
 module.exports = {
     delete_table : delete_table,
-    get_endpoint : get_endpoint
+    get_endpoint : get_endpoint,
+    difference_arr : difference_arr
 }
