@@ -121,7 +121,11 @@ async function queryAndUpdateFollowers() {
      first_time = "Y";
   }
   console.log('going for audit insert' );
-  audit.insert_audit("tanmay_patil", followers_gained, followers_lost,comment,first_time);
+  await audit.insert_audit("tanmay_patil", followers_gained, followers_lost,comment,first_time);
+  return comment ;
 }
 
+module.exports = {
+  queryAndUpdateFollowers : queryAndUpdateFollowers
+};
 queryAndUpdateFollowers();
