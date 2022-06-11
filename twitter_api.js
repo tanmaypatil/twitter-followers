@@ -20,7 +20,7 @@ async function fetch_followers() {
   let users = [];
   let hasNextPage = true;
   let nextToken = null;
-  console.log("Retrieving users this user is following...");
+  console.log("fetch_followers : Retrieving users this user is following");
   while (hasNextPage) {
     let resp = await getPage(params, options, nextToken);
     if (

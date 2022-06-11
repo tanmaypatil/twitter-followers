@@ -1,0 +1,21 @@
+name: Deploy lambda twitter followers
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: secrets
+    steps:
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'twitterFollowers.zip'
+        exclusions: '*.git*  /test/* lambda_body.json  *.zip *.sh *.bat *.md LICENSE *.png '
+    - name: upload lambda function zip file
+      run: |
+       aws lambda update-function-code --function-name twitterFollowers --zip-file fileb://twitterFollowers.zip
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: 'ap-south-1'
