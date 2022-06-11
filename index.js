@@ -4,8 +4,8 @@ exports.handler = async function (event, context) {
     console.log(` start execution of lambda ${context.functionName}`);
     console.log("EVENT: \n" + JSON.stringify(event, null, 2));
     console.log('calling queryAndUpdateFollowers');
-    description = t.queryAndUpdateFollowers();
-    console.log('post calling queryAndUpdateFollowers');
+    description = await t.queryAndUpdateFollowers();
+    console.log('post calling queryAndUpdateFollowers : '+description);
     let responseBody = { description: description };
     let response = {
       statusCode: 200,
